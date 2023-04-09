@@ -13,7 +13,7 @@ class LoginCubit extends Cubit<LoginStates> {
   IconData suffix = Icons.visibility_outlined;
   bool isPassword = true;
 
-  void loginUser({
+  void userLogin({
     required String email,
     required String password,
   }) {

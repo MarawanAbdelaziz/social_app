@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/modules/register_screen/cubit/cubit.dart';
 import 'package:social_app/modules/register_screen/cubit/states.dart';
 
+import '../../layout/social_layout.dart';
 import '../../shared/components/components.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -29,6 +30,9 @@ class RegisterScreen extends StatelessWidget {
           // if (state is RegisterErrorState) {
           //   showtoast(msg: state.error, states: ToastStates.error);
           // }
+          if (state is CreateUserSuccessState) {
+            navigateAndFinish(context, const SocialLayout());
+          }
         },
         builder: (context, state) {
           var cubit = RegisterCubit.get(context);
@@ -107,7 +111,7 @@ class RegisterScreen extends StatelessWidget {
                           },
                           onSubmit: (value) {
                             if (formkey.currentState!.validate()) {
-                              cubit.registerUser(
+                              cubit.userRegister(
                                 name: nameController.text,
                                 email: emailController.text,
                                 password: passwordController.text,
@@ -131,7 +135,7 @@ class RegisterScreen extends StatelessWidget {
                             child: defaultButton(
                               function: () {
                                 if (formkey.currentState!.validate()) {
-                                  cubit.registerUser(
+                                  cubit.userRegister(
                                     name: nameController.text,
                                     email: emailController.text,
                                     password: passwordController.text,

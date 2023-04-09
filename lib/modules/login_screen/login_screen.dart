@@ -3,6 +3,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/layout/social_layout.dart';
 import 'package:social_app/shared/components/components.dart';
 
 import '../../shared/styles/colors.dart';
@@ -28,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           }
 
           if (state is LoginSuccessState) {
-            showtoast(msg: 'Success', states: ToastStates.success);
+            navigateTo(context, const SocialLayout());
           }
         },
         builder: (context, state) {
@@ -87,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                         suffix: cubit.suffix,
                         onSubmit: (value) {
                           if (formKey.currentState!.validate()) {
-                            cubit.loginUser(
+                            cubit.userLogin(
                               email: emailController.text,
                               password: passwordController.text,
                             );
@@ -113,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                           builder: (context) => defaultButton(
                             function: () {
                               if (formKey.currentState!.validate()) {
-                                cubit.loginUser(
+                                cubit.userLogin(
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
