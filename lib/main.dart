@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/modules/login_screen/login_screen.dart';
 import 'package:social_app/shared/bloc_observer.dart';
+import 'package:social_app/shared/cubit/cubit.dart';
+import 'package:social_app/shared/cubit/states.dart';
 import 'package:social_app/shared/network/local/cache_helper.dart';
 import 'package:social_app/shared/network/remote/dio_helper.dart';
 import 'package:social_app/shared/styles/themes.dart';
@@ -30,11 +32,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: themeLight,
-      darkTheme: darkTheme,
-      home: LoginScreen(),
+    return BlocProvider(
+      create: (context) => SocialCubit(),
+      child: BlocConsumer<SocialCubit, SocialStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: themeLight,
+            darkTheme: darkTheme,
+            home: LoginScreen(),
+          );
+        },
+      ),
     );
   }
 }
