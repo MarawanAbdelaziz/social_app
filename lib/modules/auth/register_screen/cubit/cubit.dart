@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/models/user_moder.dart';
-import 'package:social_app/modules/register_screen/cubit/states.dart';
+import 'package:social_app/modules/auth/register_screen/cubit/states.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitialState());
@@ -29,8 +29,6 @@ class RegisterCubit extends Cubit<RegisterState> {
       password: password,
     )
         .then((value) {
-      print(value.user!.email);
-      print(value.user!.uid);
       UserModel(
         name: name,
         email: email,
@@ -43,7 +41,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         phone: phone,
         uId: value.user!.uid,
       );
-      emit(RegisterSuccessState());
     }).catchError((error) {
       emit(RegisterErrorState(error.toString()));
     });
@@ -60,6 +57,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       email: email,
       phone: phone,
       uId: uId,
+      isEmailVerified: false,
     );
     FirebaseFirestore.instance
         .collection('users')

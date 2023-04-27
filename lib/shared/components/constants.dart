@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:social_app/modules/login_screen/login_screen.dart';
+import 'package:social_app/modules/auth/login_screen/login_screen.dart';
 import 'package:social_app/shared/components/components.dart';
 
 import '../network/local/cache_helper.dart';
@@ -19,3 +19,4 @@ void printFullText(String text) {
 }
 
 String? token = '';
+String? uId = '';

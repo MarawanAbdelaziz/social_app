@@ -3,11 +3,12 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/modules/register_screen/cubit/cubit.dart';
-import 'package:social_app/modules/register_screen/cubit/states.dart';
+import 'package:social_app/modules/auth/login_screen/login_screen.dart';
+import 'package:social_app/modules/auth/register_screen/cubit/cubit.dart';
+import 'package:social_app/modules/auth/register_screen/cubit/states.dart';
 
-import '../../layout/social_layout.dart';
-import '../../shared/components/components.dart';
+import '../../../layout/social_layout.dart';
+import '../../../shared/components/components.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
@@ -31,7 +32,7 @@ class RegisterScreen extends StatelessWidget {
           //   showtoast(msg: state.error, states: ToastStates.error);
           // }
           if (state is CreateUserSuccessState) {
-            navigateAndFinish(context, const SocialLayout());
+            navigateAndFinish(context, LoginScreen());
           }
         },
         builder: (context, state) {

@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/layout/social_layout.dart';
 import 'package:social_app/shared/components/components.dart';
+import 'package:social_app/shared/network/local/cache_helper.dart';
 
-import '../../shared/styles/colors.dart';
+import '../../../shared/styles/colors.dart';
 import '../register_screen/register_screen.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -29,7 +30,9 @@ class LoginScreen extends StatelessWidget {
           }
 
           if (state is LoginSuccessState) {
-            navigateTo(context, const SocialLayout());
+            CacheHelper.saveData(key: 'uId', value: state.uId).then((value) {
+              navigateAndFinish(context, const SocialLayout());
+            });
           }
         },
         builder: (context, state) {

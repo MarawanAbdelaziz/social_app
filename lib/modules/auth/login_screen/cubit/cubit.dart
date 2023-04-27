@@ -3,7 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:social_app/modules/login_screen/cubit/states.dart';
+import 'package:social_app/modules/auth/login_screen/cubit/states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialState());
@@ -27,7 +27,7 @@ class LoginCubit extends Cubit<LoginStates> {
         .then((value) {
       print(value.user!.email);
       print(value.user!.uid);
-      emit(LoginSuccessState());
+      emit(LoginSuccessState(value.user!.uid));
     }).catchError((error) {
       emit(LoginErrorState(error.toString()));
     });
