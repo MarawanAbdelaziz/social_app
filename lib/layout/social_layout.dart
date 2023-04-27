@@ -9,7 +9,7 @@ class SocialLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SocialCubit, SocialStates>(
+    return BlocConsumer<SocialCubit, SocialAppStates>(
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = SocialCubit.get(context);
@@ -47,3 +47,67 @@ class SocialLayout extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+      //!  verify your email
+          // ConditionalBuilder(
+          //   // ignore: unnecessary_null_comparison
+          //   condition: cubit.model != null,
+          //   builder: (context) {
+          //     return Column(
+          //       children: [
+          //         //!  verify your email
+          //         // if (!FirebaseAuth.instance.currentUser!.emailVerified)
+          //         //   Container(
+          //         //     color: Colors.amber.withOpacity(0.6),
+          //         //     child: Padding(
+          //         //       padding: const EdgeInsets.symmetric(horizontal: 10),
+          //         //       child: Row(
+          //         //         children: [
+          //         //           const Icon(
+          //         //             Icons.info_outline_rounded,
+          //         //             size: 35,
+          //         //             color: Colors.red,
+          //         //           ),
+          //         //           const SizedBox(width: 5.0),
+          //         //           const Text('please verify your email'),
+          //         //           const Spacer(),
+          //         //           const SizedBox(
+          //         //             width: 20.0,
+          //         //           ),
+          //         //           defaultButton(
+          //         //             function: () {
+          //         //               FirebaseAuth.instance.currentUser!
+          //         //                   .sendEmailVerification()
+          //         //                   .then((value) {
+          //         //                 showtoast(
+          //         //                   msg: 'check your mail',
+          //         //                   states: ToastStates.success,
+          //         //                 );
+          //         //               }).catchError((error) {
+          //         //                 showtoast(
+          //         //                   msg: error.toString(),
+          //         //                   states: ToastStates.error,
+          //         //                 );
+          //         //               });
+          //         //             },
+          //         //             text: 'send',
+          //         //             width: 120,
+          //         //             fontSize: 20,
+          //         //             radius: 10,
+          //         //           ),
+          //         //         ],
+          //         //       ),
+          //         //     ),
+          //         //   ),
+          //       ],
+          //     );
+          //   },
+          //   fallback: (context) =>
+          //       const Center(child: CircularProgressIndicator()),
+          // ),
+         
+         
