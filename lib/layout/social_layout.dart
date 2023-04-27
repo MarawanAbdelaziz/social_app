@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/shared/cubit/cubit.dart';
 import 'package:social_app/shared/cubit/states.dart';
-
+import 'package:social_app/shared/styles/icon_broken.dart';
 
 class SocialLayout extends StatelessWidget {
   const SocialLayout({super.key});
@@ -23,11 +23,11 @@ class SocialLayout extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.notification_important),
+                icon: const Icon(IconBroken.Notification),
               ),
               IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.search),
+                icon: const Icon(IconBroken.Search),
               )
             ],
           ),
@@ -39,22 +39,21 @@ class SocialLayout extends StatelessWidget {
             },
             items: [
               const BottomNavigationBarItem(
-                icon: Icon(Icons.feed_rounded),
-                label: 'Feeds',
+                icon: Icon(IconBroken.Home),
+                label: 'Home',
               ),
               const BottomNavigationBarItem(
-                icon: Icon(Icons.chat_bubble_outline_outlined),
+                icon: Icon(IconBroken.Chat),
                 label: 'Chats',
               ),
               const BottomNavigationBarItem(
-                icon: Icon(Icons.people_outline),
+                icon: Icon(IconBroken.Location),
                 label: 'Users',
               ),
               const BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: Icon(IconBroken.Setting),
                 label: 'Settings',
               ),
-
             ],
           ),
         );
