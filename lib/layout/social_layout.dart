@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/shared/cubit/cubit.dart';
 import 'package:social_app/shared/cubit/states.dart';
 
+
 class SocialLayout extends StatelessWidget {
   const SocialLayout({super.key});
 
@@ -14,6 +15,7 @@ class SocialLayout extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = SocialAppCubit.get(context);
+
         return Scaffold(
           appBar: AppBar(
             title: Text(cubit.title[cubit.currentIndex]),
@@ -52,6 +54,7 @@ class SocialLayout extends StatelessWidget {
                 icon: Icon(Icons.settings),
                 label: 'Settings',
               ),
+
             ],
           ),
         );
@@ -117,5 +120,4 @@ class SocialLayout extends StatelessWidget {
           //   fallback: (context) =>
           //       const Center(child: CircularProgressIndicator()),
           // ),
-         
          

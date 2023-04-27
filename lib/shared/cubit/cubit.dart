@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +36,7 @@ class SocialAppCubit extends Cubit<SocialAppStates> {
 
   List<Widget> screen = [
     const FeedsScreen(),
+
     const ChatsScreen(),
     const UsersScreen(),
     const SettingsScreen(),
