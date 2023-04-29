@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/models/user_moder.dart';
 import 'package:social_app/modules/bottom_nav/chats_screen/chats_screen.dart';
-import 'package:social_app/modules/bottom_nav/home_screen/home_screen.dart';
+import 'package:social_app/modules/bottom_nav/feeds_screen/feeds_screen.dart';
 import 'package:social_app/modules/bottom_nav/settings_screen/settings_screen.dart';
 import 'package:social_app/modules/bottom_nav/users_screen/users_screen.dart';
 import 'package:social_app/shared/components/constants.dart';
@@ -34,7 +34,7 @@ class SocialAppCubit extends Cubit<SocialAppStates> {
   }
 
   List<Widget> screen = [
-    const HomeScreen(),
+    const FeedsScreen(),
     const ChatsScreen(),
     const UsersScreen(),
     const SettingsScreen(),
