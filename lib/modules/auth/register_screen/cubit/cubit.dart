@@ -57,6 +57,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       email: email,
       phone: phone,
       uId: uId,
+      bio: 'write your bio ...',
+      image:
+          'https://img.freepik.com/premium-vector/bearded-smiling-man-with-arms-crossed_165429-132.jpg?w=740',
+      cover:
+          'https://as1.ftcdn.net/v2/jpg/03/56/68/96/1000_F_356689689_nv13vuFrYK3rAQospF6BogUa9uXm2KBf.jpg',
       isEmailVerified: false,
     );
     FirebaseFirestore.instance

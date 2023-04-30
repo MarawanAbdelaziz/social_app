@@ -4,7 +4,6 @@ abstract class SocialAppStates {}
 
 class InitailState extends SocialAppStates {}
 
-
 class GetUserLoadingState extends SocialAppStates {}
 
 class GetUserSuccessState extends SocialAppStates {}
@@ -17,3 +16,4 @@ class GetUserErrorState extends SocialAppStates {
 
 class ChangeBottomNavState extends SocialAppStates {}
 
+class NewPostState extends SocialAppStates {}

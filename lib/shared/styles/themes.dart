@@ -43,8 +43,7 @@ ThemeData themeLight = ThemeData(
   fontFamily: 'ChrustyRock',
   textTheme: const TextTheme(
       bodyMedium: TextStyle(
-    fontSize: 18.0,
-    fontWeight: FontWeight.w600,
+    fontSize: 15.0,
     color: Colors.black,
   )),
   primarySwatch: defaultColor,

@@ -12,10 +12,11 @@ Widget defaultButton({
   required Function function,
   required String text,
   bool isUpperCase = true,
-  double fontSize = 30.0,
+  double fontSize = 15.0,
 }) =>
     Container(
       width: width,
+      height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
         color: background,
