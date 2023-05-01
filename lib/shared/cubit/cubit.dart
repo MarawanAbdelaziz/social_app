@@ -1,10 +1,15 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:social_app/models/user_moder.dart';
 import 'package:social_app/modules/bottom_nav/chats_screen/chats_screen.dart';
 import 'package:social_app/modules/bottom_nav/feeds_screen/feeds_screen.dart';
-import 'package:social_app/modules/bottom_nav/new_post/new_post_screen.dart';
+import 'package:social_app/modules/new_post/new_post_screen.dart';
 import 'package:social_app/modules/bottom_nav/settings_screen/settings_screen.dart';
 import 'package:social_app/modules/bottom_nav/users_screen/users_screen.dart';
 import 'package:social_app/shared/components/constants.dart';
@@ -15,13 +20,13 @@ class SocialAppCubit extends Cubit<SocialAppStates> {
 
   static SocialAppCubit get(context) => BlocProvider.of(context);
 
-  UserModel? model;
+  UserModel? userModel;
 
   void getUserData() {
     emit(GetUserLoadingState());
 
     FirebaseFirestore.instance.collection('users').doc(uId).get().then((value) {
-      model = UserModel.fromJson(value.data());
+      userModel = UserModel.fromJson(value.data());
       emit(GetUserSuccessState());
     }).catchError((error) {
       emit(GetUserErrorState(error.toString()));
@@ -53,4 +58,30 @@ class SocialAppCubit extends Cubit<SocialAppStates> {
     'Users',
     'Settings',
   ];
+
+  File? profileImage;
+  var picker = ImagePicker();
+
+  Future<void> getProfileImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (PickedFile != null) {
+      emit(ProfileImagePickedSuccessState());
+      profileImage = File(pickedFile!.path);
+    } else {
+      print('No image selected.');
+      emit(ProfileImagePickedErrorState());
+    }
+  }
+
+  File? coverImage;
+  Future<void> getCoverImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (PickedFile != null) {
+      emit(CoverImagePickedSuccessState());
+      coverImage = File(pickedFile!.path);
+    } else {
+      print('No image selected.');
+      emit(CoverImagePickedErrorState());
+    }
+  }
 }

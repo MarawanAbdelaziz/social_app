@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_app/layout/social_layout.dart';
+import 'package:social_app/shared/styles/icon_broken.dart';
 
 // ignore_for_file:prefer_const_constructors
 
@@ -133,3 +135,23 @@ Color chooseToastColor(ToastStates state) {
   }
   return color;
 }
+
+PreferredSizeWidget defaultAppBar({
+  required BuildContext context,
+  String? title,
+  List<Widget>? actions,
+}) =>
+    AppBar(
+      leading: IconButton(
+        onPressed: () => Navigator.pop(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SocialLayout(),
+          ),
+        ),
+        icon: Icon(IconBroken.Arrow___Left_2),
+      ),
+      titleSpacing: 5.0,
+      title: Text(title!),
+      actions: actions,
+    );
