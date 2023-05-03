@@ -99,9 +99,10 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                    
                             ],
                           ),
-                        ),
+                     ),
                         Stack(
                           alignment: AlignmentDirectional.bottomEnd,
                           children: [

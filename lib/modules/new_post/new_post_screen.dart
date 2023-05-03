@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +8,8 @@ import 'package:social_app/shared/cubit/states.dart';
 import 'package:social_app/shared/styles/icon_broken.dart';
 
 class NewPostScreen extends StatelessWidget {
-  const NewPostScreen({super.key});
+  NewPostScreen({super.key});
+  var textcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,21 @@ class NewPostScreen extends StatelessWidget {
             title: 'Create Post',
             actions: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  var now = DateTime.now();
+
+                  if (cubit.postImage == null) {
+                    cubit.createPost(
+                      dateTime: now.toString(),
+                      text: textcontroller.text,
+                    );
+                  } else {
+                    cubit.uploadPostImage(
+                      dateTime: now.toString(),
+                      text: textcontroller.text,
+                    );
+                  }
+                },
                 child: const Text(
                   'POST',
                   style: TextStyle(
@@ -39,6 +54,13 @@ class NewPostScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (state is CreatePostLoadingState)
+                  const LinearProgressIndicator(
+                    color: Colors.black,
+                    backgroundColor: Colors.white,
+                  ),
+                if (state is CreatePostLoadingState)
+                  const SizedBox(height: 10.0),
                 Row(
                   children: [
                     const CircleAvatar(
@@ -76,6 +98,7 @@ class NewPostScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextFormField(
+                    controller: textcontroller,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'what is on your mind, Marawan?',
@@ -86,11 +109,50 @@ class NewPostScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (cubit.postImage != null)
+                  Column(
+                    children: [
+                      const SizedBox(height: 20),
+                      Stack(
+                        alignment: AlignmentDirectional.topEnd,
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 140,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5.0)),
+                              image: DecorationImage(
+                                image: FileImage(cubit.postImage!),
+                                fit: BoxFit.cover,
+                                alignment: Alignment.topCenter,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              cubit.removePostImage();
+                            },
+                            icon: const CircleAvatar(
+                              radius: 20.0,
+                              child: Icon(
+                                Icons.close,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
                 Row(
                   children: [
                     Expanded(
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          cubit.getpostImage();
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [

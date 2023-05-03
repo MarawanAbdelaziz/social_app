@@ -37,3 +37,17 @@ class UploadCoverImageErrorState extends SocialAppStates {}
 class UserUploadLoadingState extends SocialAppStates {}
 
 class UserUploadErrorState extends SocialAppStates {}
+
+// Create Post
+
+class CreatePostLoadingState extends SocialAppStates {}
+
+class CreatePostSuccessState extends SocialAppStates {}
+
+class CreatePostErrorState extends SocialAppStates {}
+
+class PostImagePickedSuccessState extends SocialAppStates {}
+
+class PostImagePickedErrorState extends SocialAppStates {}
+
+class RemovePostImageState extends SocialAppStates {}
