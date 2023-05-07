@@ -10,7 +10,6 @@ import 'package:social_app/shared/cubit/states.dart';
 import 'package:social_app/shared/network/local/cache_helper.dart';
 import 'package:social_app/shared/network/remote/dio_helper.dart';
 import 'package:social_app/shared/styles/themes.dart';
-
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
 
   const MyApp(this.startWidget, {super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

@@ -19,7 +19,7 @@ class FeedsScreen extends StatelessWidget {
         // ignore: unused_local_variable
         var cubit = SocialAppCubit.get(context);
         return ConditionalBuilder(
-          condition: cubit.posts.isNotEmpty,
+          condition: cubit.posts.isNotEmpty && cubit.userModel != null,
           builder: (context) => SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
@@ -58,7 +58,7 @@ class FeedsScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) =>
-                      buildPostItem(cubit.posts[index], context),
+                      buildPostItem(cubit.posts[index], context, index),
                   separatorBuilder: (context, index) => SizedBox(height: 10.0),
                   itemCount: cubit.posts.length,
                 ),
@@ -72,7 +72,7 @@ class FeedsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildPostItem(PostModel model, context) => Card(
+  Widget buildPostItem(PostModel model, context, index) => Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 10.0,
         margin: const EdgeInsets.all(8.0),
@@ -269,7 +269,7 @@ class FeedsScreen extends StatelessWidget {
                               ),
                               SizedBox(width: 3),
                               Text(
-                                '0',
+                                '${SocialAppCubit.get(context).likes[index]}',
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge!
@@ -352,7 +352,10 @@ class FeedsScreen extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      SocialAppCubit.get(context)
+                          .likePost(SocialAppCubit.get(context).postsId[index]);
+                    },
                     child: Row(
                       children: [
                         Icon(

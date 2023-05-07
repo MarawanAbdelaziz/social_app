@@ -58,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(
                 '${userModel.name}',
                 style: Theme.of(context).textTheme.bodyLarge,
@@ -147,7 +147,7 @@ class SettingsScreen extends StatelessWidget {
                   Expanded(
                     child: OutlinedButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         'Add Photos',
                         style: TextStyle(
                           color: Colors.black,
@@ -155,12 +155,12 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   OutlinedButton(
                       onPressed: () {
                         navigateTo(context, EditProfileScreen());
                       },
-                      child: Icon(
+                      child: const Icon(
                         IconBroken.Edit,
                         color: Colors.black,
                         size: 20,

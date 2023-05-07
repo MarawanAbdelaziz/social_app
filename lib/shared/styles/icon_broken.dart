@@ -5,13 +5,15 @@
 //    - family: Iconly-Broken
 //      fonts:
 //       - asset: fonts/icons.ttf
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/widgets.dart';
 
 class IconBroken {
   IconBroken._();
 
   static const String _fontFamily = 'IconBroken';
-
+  
   static const IconData User = IconData(0xe900, fontFamily: _fontFamily);
   static const IconData User1 = IconData(0xe901, fontFamily: _fontFamily);
   static const IconData Activity = IconData(0xe902, fontFamily: _fontFamily);

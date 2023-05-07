@@ -24,6 +24,14 @@ class GetPostsErrorState extends SocialAppStates {
   GetPostsErrorState(this.error);
 }
 
+class LikePostSuccessState extends SocialAppStates {}
+
+class LikePostErrorState extends SocialAppStates {
+  final String error;
+
+  LikePostErrorState(this.error);
+}
+
 class ChangeBottomNavState extends SocialAppStates {}
 
 class NewPostState extends SocialAppStates {}
